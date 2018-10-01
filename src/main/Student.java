@@ -11,7 +11,7 @@ public class Student extends Person {
 	public Student(String ssn, String name, String address, String email, String studentID, String major, double gpa) {
 		super(ssn, name, address, email);
 		this.studentID = studentID;
-		System.out.println("Student ID: " + this.studentID);
+		//System.out.println("Student ID: " + this.studentID);
 		this.major = major;
 		this.gpa = gpa;
 	}
@@ -40,6 +40,15 @@ public class Student extends Person {
 		this.gpa = gpa;
 	}
 	
+	/** NEW IN HW3:
+	 * Implement an equals method with Student class
+	 */
+	public boolean equals(Object other) {
+		if (!(other instanceof Student)) return false; // not a comparable object
+		Student s = (Student) other; 
+		return this.studentID.equals(s.getStudentID()); // equal students have equal studentID
+	}
+	
 	public void printStudent() {
 		System.out.println( "** Student Info **" 
 				+ "\nName: " + this.name
@@ -48,6 +57,7 @@ public class Student extends Person {
 				+ "\nAddress: " + this.address
 				+ "\nMajor: " + this.major
 				+ "\nGPA: " + this.gpa
+				+ "\n"
 				);
 	}
 	
